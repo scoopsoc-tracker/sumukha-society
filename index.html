@@ -31,7 +31,7 @@ footer{text-align:center;color:var(--mu);font-size:12px;margin-top:14px}
 <h2>🌐 Member/Public view</h2><p>No login needed. A view-only summary of the society's figures, as of the last update.</p><span class="tag">Open public view →</span></a>
 <footer>Sumukha Co Op Society</footer>
 <script>
-var LIVE='https://scoopsoc-tracker.github.io/admin180826//',H='26deebe170a65f0246a0c0b1b742abe162a2862dc6bfb4ebd32eff374482560e';
+var LIVE='https://scoopsoc-tracker.github.io/admin180826/',H='26deebe170a65f0246a0c0b1b742abe162a2862dc6bfb4ebd32eff374482560e';
 async function sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
 async function login(){var e=document.getElementById('err');try{var h=await sha(document.getElementById('u').value.trim().toLowerCase()+':'+document.getElementById('p').value);if(h===H){e.style.color='var(--ac)';e.innerHTML='<a href="'+LIVE+'" target="_blank" rel="noopener" style="color:var(--ac);font-weight:600">Login successful. Tap here to open the live page →</a><br><small style="color:var(--mu);word-break:break-all">If it does not open, copy this address into your browser: '+LIVE+'</small>'}else{e.style.color='#c0392b';e.textContent='Incorrect username or password.'}}catch(x){e.textContent='Login is not available in this browser.'}}
 document.getElementById('go').onclick=login;
