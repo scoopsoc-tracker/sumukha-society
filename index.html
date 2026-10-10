@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sumukha Co Op Society</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6f5;--card:#fff;--tx:#17211d;--mu:#5d6b65;--bd:#d9e1dd;--ac:#1f7a5a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101513;--card:#18201c;--tx:#e8efeb;--mu:#9aa8a1;--bd:#2a3530;--ac:#4cc79b}}
+:root[data-theme="dark"]{--bg:#101513;--card:#18201c;--tx:#e8efeb;--mu:#9aa8a1;--bd:#2a3530;--ac:#4cc79b}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;justify-content:center;padding:16px}
+.w{width:100%;max-width:560px}
+.hero{background:linear-gradient(135deg,#1f7a5a,#0f4d38);color:#fff;border-radius:16px;padding:22px;text-align:center;box-shadow:0 6px 20px rgba(15,77,56,.28);margin-bottom:16px}
+.logo{width:88px;height:88px;margin:0 auto 4px}.logo svg{width:100%;height:100%;display:block}h1{margin:6px 0 2px;font-size:24px}.hero p{margin:0;opacity:.85;font-size:14px}
+.opt{display:block;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;margin-bottom:12px;text-decoration:none;color:var(--tx);transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--ac);transform:translateY(-2px)}
+.opt h2{margin:0 0 4px;font-size:17px}.opt p{margin:0;color:var(--mu);font-size:13px;line-height:1.45}
+.tag{display:inline-block;margin-top:10px;padding:5px 14px;border-radius:999px;background:var(--ac);color:#fff;font-size:13px;font-weight:600}
+.opt.alt .tag{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+input{font:inherit;padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:var(--tx)}input:focus{outline:2px solid var(--ac);outline-offset:1px}
+footer{text-align:center;color:var(--mu);font-size:12px;margin-top:14px}
+</style></head><body><div class="w">
+<div class="hero"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="135 50 330 330" role="img" aria-label="Sumukha Co-Op Society logo"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#25946c"/><stop offset="1" stop-color="#0f4d38"/></linearGradient></defs><circle cx="300" cy="215" r="150" fill="url(#lg)" stroke="#fff" stroke-width="8"/><circle cx="300" cy="215" r="134" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="3"/><path d="M215 235 Q300 320 385 235" fill="none" stroke="#f2c14e" stroke-width="12" stroke-linecap="round"/><path d="M300 272 L300 178" stroke="#fff" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M300 218 C262 223 240 198 238 168 C275 168 298 188 300 218 Z" fill="#fff"/><path d="M300 198 C338 203 360 178 362 148 C325 148 302 168 300 198 Z" fill="#f2c14e"/></svg></div><h1>Sumukha Co Op Society</h1><p>Contributions, loans &amp; investments</p></div>
+<div class="opt" style="cursor:default">
+<h2>🔐 Admin login</h2><p>Enter the society credentials to see the live, always up-to-date figures</p>
+<div style="display:grid;gap:8px;margin-top:12px">
+<input id="u" placeholder="Username" autocomplete="username" autocapitalize="none">
+<input id="p" type="password" placeholder="Password" autocomplete="current-password">
+<button id="go" class="tag" style="border:0;cursor:pointer;justify-self:start">Log in →</button>
+<div id="err" style="color:#c0392b;font-size:13px;min-height:16px"></div></div></div>
+<a class="opt alt" href="https://scoopsoc-tracker.github.io/public-view/" target="_blank" rel="noopener">
+<h2>🌐 Member/Public view</h2><p>No login needed. A view-only summary of the society's figures, as of the last update.</p><span class="tag">Open public view →</span></a>
+<footer>Sumukha Co Op Society</footer>
+<script>
+var LIVE='https://scoopsoc-tracker.github.io/admin180826//',H='26deebe170a65f0246a0c0b1b742abe162a2862dc6bfb4ebd32eff374482560e';
+async function sha(t){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')}
+async function login(){var e=document.getElementById('err');try{var h=await sha(document.getElementById('u').value.trim().toLowerCase()+':'+document.getElementById('p').value);if(h===H){e.style.color='var(--ac)';e.innerHTML='<a href="'+LIVE+'" target="_blank" rel="noopener" style="color:var(--ac);font-weight:600">Login successful. Tap here to open the live page →</a><br><small style="color:var(--mu);word-break:break-all">If it does not open, copy this address into your browser: '+LIVE+'</small>'}else{e.style.color='#c0392b';e.textContent='Incorrect username or password.'}}catch(x){e.textContent='Login is not available in this browser.'}}
+document.getElementById('go').onclick=login;
+document.getElementById('p').onkeydown=function(ev){if(ev.key=='Enter')login()};
+</script>
+</div></body></html>
